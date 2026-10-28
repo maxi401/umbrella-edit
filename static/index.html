@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Umbrella Edit</title>
+  <meta name="apple-mobile-web-app-title" content="Umbrella Edit">
+  <meta name="application-name" content="Umbrella Edit">
+  <link rel="icon" type="image/png" href="/static/umbrella-touch-180.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/static/umbrella-touch-180.png">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header class="topbar"><img class="brandmark" src="/static/umbrella-touch-180.png" alt="Umbrella Edit logo"><div class="title">umbrella<span>edit.</span></div><div class="masthead-note">AREBELA’S<br>STYLE JOURNAL</div></header>
+  <main>
+    <section id="todayView">
+      <section class="home-greeting"><div class="edition-line"><span>THE DAILY EDIT / 01</span><span id="todayDate">TODAY</span></div><div class="greeting-footer"><div class="greeting-copy"><h1 id="dailyGreeting">Hello, <i>Arebela.</i></h1><p id="dailyGreetingNote">A little inspiration for wherever today takes you.</p></div><div class="mascot-greeting"><span>HI, IT’S<br>AREBELA ↗</span><div id="arebelaMascot" class="mascot-dressing" role="img" aria-label="A cartoon of Arebela with changing expressions and accessories"></div></div></div></section>
+      <div class="home-look-heading"><span>01 / THE LOOK</span><span>MAKE IT YOURS &nbsp; ↗</span></div>
+      <article class="today-pick home-pick">
+        <div id="todayPair" class="today-pair" hidden></div>
+        <div class="pick-image-wrap" id="todaySingleWrap"><img id="pickImage" class="pick-image" alt="Suggested look"><div class="pick-ribbon">TODAY’S ARCHIVE PICK</div></div>
+        <div class="pick-copy"><div class="eyebrow" id="pickEyebrow">TODAY’S LOOK</div><h2 id="pickTitle">Finding a look…</h2><p id="pickReason"></p><div class="home-inspiration" id="homeInspiration" hidden></div><div class="pick-meta" id="pickMeta"></div><button id="openPick" hidden>View this look</button><button id="drawToday" class="primary draw-button">↻ &nbsp; Draw another look</button></div>
+      </article>
+    </section>
+    <section id="insightsView" hidden>
+      <section class="intro archive-intro"><div><div class="eyebrow">YOUR STYLE JOURNAL</div><h1>Your style <i>signals.</i></h1><p>A little more to know about your archive.</p></div></section>
+      <aside class="insight-panel"><div class="eyebrow">YOUR STYLE SIGNALS</div><h2>A few things<br><i>to know today.</i></h2><div id="signalList" class="signal-list"></div><div class="model-note"><span class="note-dot">✳</span><div><b>How this pick works</b><p id="modelExplanation"></p></div></div></aside>
+      <section class="weekly-strip"><div><div class="eyebrow">THIS WEEK IN YOUR STYLE</div><h3 id="weeklyTitle">Your outfit story is just beginning.</h3><p id="weeklyText">Log a look to start seeing what you reach for most.</p></div><button class="secondary" data-goto-archive>Browse the archive ↗</button></section><button class="primary insights-log" id="newOotd">＋ Log today’s OOTD</button>
+    </section>
+    <section id="archiveView" hidden>
+      <section class="intro archive-intro"><div><div class="eyebrow">YOUR PERSONAL STYLE ARCHIVE</div><h1>Everything you’ve <i>saved.</i></h1><p>Outfits, closet pieces, things on your mind, and inspiration.</p></div><div class="stamp">STYLE<br>JOURNAL<br><b>№ 001</b></div></section>
+      <section class="stats" id="stats"></section>
+      <section class="toolbar"><div class="tabs" id="tabs"><button class="active" data-filter="all">Everything</button><button data-filter="ootd">Outfits</button><button data-filter="owned_candidate">In my closet</button><button data-filter="interest_candidate">On my mind</button><button data-filter="inspiration">Inspiration</button></div><label class="search">⌕ <input id="search" placeholder="Search brands, notes, posts…"></label><select id="sort"><option value="recent">Recently added</option><option value="wears">Most worn</option><option value="title">Post title</option></select></section>
+      <section id="grid" class="grid"></section>
+    </section>
+    <section id="visualView" hidden>
+      <section class="intro archive-intro"><div><div class="eyebrow">PRETRAINED HUMAN PARSER · LOCAL ANALYSIS</div><h1>Build a look <i>from pieces.</i></h1><p>Explore isolated garment cutouts and outfit combinations drawn from the saved style archive.</p></div><div class="stamp">VISUAL<br>ANALYSIS<br><b>№ 001</b></div></section>
+      <section class="recommendation-panel"><div class="recommendation-heading"><div><div class="eyebrow">INSPIRED BY HER OOTD ARCHIVE</div><h2>Today’s combination <i>ideas.</i></h2><p>Uses OOTD cutouts, past top-and-bottom pairings, and a daily-life palette reference.</p></div><button class="secondary" id="shuffleLooks">↻ More combinations</button></div>
+        <div class="style-context"><div class="context-top"><div><div class="eyebrow">TODAY’S WEATHER & OCCASION</div><div id="contextDate" class="context-date"></div></div><label class="occasion-select">Plans<select id="occasionSelect"><option value="everyday">Everyday</option><option value="work">Work</option><option value="date">Dinner / date</option><option value="celebration">Celebration / birthday</option><option value="travel">Travel</option></select></label></div><div class="weather-controls"><label>City for local forecast<input id="weatherCity" placeholder="Enter a city, e.g. Shanghai"></label><button class="secondary" id="loadWeather">Get weather</button></div><div id="weatherResult" class="weather-result"><span>Set a city to add today’s forecast and styling cue.</span></div><div id="occasionResult" class="occasion-result"></div><div class="context-footnote">Weather comes from Open-Meteo. Only the city you enter is used for the forecast; this app does not request precise device location.</div></div>
+        <div id="lookSuggestions" class="look-suggestions"><div class="empty">Preparing outfit combinations…</div></div><div class="model-caption recommendation-note">Each card explains its match signal. Predictions still need review before treating pieces as owned.</div></section>
+      <section class="inspiration-matches"><div class="eyebrow">FROM HER INSPIRATION ARCHIVE</div><h2>Ideas meet <i>her closet.</i></h2><p>Garment references matched by category and color with closet pieces.</p><div id="inspirationMatches" class="inspiration-match-list"></div></section>
+      <section id="segmentSummary" class="segment-summary"></section>
+      <section class="segment-tools"><div><div class="eyebrow">GARMENT LIBRARY</div><h2>Isolated <i>pieces.</i></h2></div><label>Show<select id="segmentFilter"><option value="all">All categories</option><option value="top">Tops</option><option value="bottom">Bottoms</option><option value="accessory">Accessories</option><option value="bag">Bags</option><option value="hat">Hats</option></select></label></section>
+      <section id="segmentGrid" class="segment-grid"><div class="empty">Loading visual analysis…</div></section>
+    </section>
+  </main>
+  <nav class="main-nav bottom-nav" aria-label="Main navigation">
+    <button class="nav-tab active" data-view="today" aria-label="Home" title="Home"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5M5.5 10v10h5v-6h3v6h5V10"/></svg></button>
+    <button class="nav-tab" data-view="archive" aria-label="Archive" title="Archive"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg></button>
+    <button class="nav-add" id="newPhoto" aria-label="Add a photo" title="Add a photo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 4v16M4 12h16"/></svg></button>
+    <button class="nav-tab" data-view="visual" aria-label="Look ideas" title="Look ideas"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 1.8 5.3L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.7L12 3ZM18 15l.8 2.2L21 18l-2.2.8L18 21l-.8-2.2L15 18l2.2-.8L18 15Z"/></svg></button>
+    <button class="nav-tab" data-view="insights" aria-label="Style insights" title="Style insights"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M5 20c.5-4 3-6 7-6s6.5 2 7 6"/></svg></button>
+  </nav>
+  <dialog id="editDialog"><form method="dialog" id="editForm"><div class="dialog-head"><div><div class="eyebrow">YOUR ARCHIVE</div><h2>Edit this note</h2></div><button type="button" class="close" aria-label="Close">×</button></div><input type="hidden" id="editId"><div class="form-grid"><label>Record type<select id="editType"><option value="ootd">Outfit</option><option value="owned_candidate">In my closet</option><option value="interest_candidate">On my mind</option><option value="inspiration">Inspiration</option></select></label><label>Brand<input id="editBrand" placeholder="Add a brand"></label><label>Price<input id="editPrice" placeholder="e.g. ¥1,280"></label><label>Purchase date<input id="editDate" type="date"></label><label>Purchase place<input id="editLocation" placeholder="City or shop"></label><label>Ownership<select id="editOwned"><option value="unknown">Not confirmed</option><option value="owned">I own it</option><option value="interested">Just interested</option><option value="not_mine">Reference / someone else</option></select></label><label class="wide">Tags<input id="editTags" placeholder="color, silhouette, texture…"></label><label class="wide">Note<textarea id="editNote" rows="3" placeholder="What caught your eye? How did you wear it?"></textarea></label></div><div class="dialog-actions"><button type="button" class="secondary" id="woreToday">＋ Wore today</button><button class="primary" id="saveEdit" value="default">Save note</button></div></form></dialog>
+  <dialog id="ootdDialog"><form method="dialog" id="ootdForm"><div class="dialog-head"><div><div class="eyebrow">TODAY’S LOOK</div><h2>Log an outfit</h2></div><button type="button" class="close" aria-label="Close">×</button></div><p class="helper">Choose a photo from the archive to start, then add a note. You can link individual closet pieces in a later update.</p><label>Choose outfit photo<select id="ootdPhoto"></select></label><label>What’s the occasion or feeling?<textarea id="ootdNote" rows="3" placeholder="Workday, dinner out, felt great in the jacket…"></textarea></label><div class="dialog-actions"><button class="primary" value="default">Save outfit</button></div></form></dialog>
+  <dialog id="photoDialog"><form method="dialog" id="photoForm"><div class="dialog-head"><div><div class="eyebrow">SAVE A NEW MOMENT</div><h2>Add a photo</h2></div><button type="button" class="close" aria-label="Close">×</button></div><label>Photo<input id="photoFile" type="file" accept="image/jpeg,image/png,image/webp" required></label><label>Save as<select id="photoType"><option value="ootd">OOTD</option><option value="owned_candidate">Bought / in my closet</option><option value="interest_candidate">Interested item</option><option value="inspiration">Inspiration</option></select></label><label>Brand or short title<input id="photoTitle" placeholder="Optional"></label><div class="dialog-actions"><span class="helper">Saved to the local archive folder on this computer.</span><button class="primary" value="default">Save photo</button></div></form></dialog>
+  <div id="toast" class="toast"></div><script src="/static/app.js"></script>
+</body></html>

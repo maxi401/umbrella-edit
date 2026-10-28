@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Closet Notes portrait icon</title>
+  <desc id="desc">A minimal illustrated portrait with a short dark bob and fringe, on a warm cream and terracotta background.</desc>
+  <defs>
+    <clipPath id="round"><circle cx="64" cy="64" r="62"/></clipPath>
+  </defs>
+  <g clip-path="url(#round)">
+    <rect width="128" height="128" fill="#e9dfcf"/>
+    <circle cx="103" cy="24" r="22" fill="#d68b72" opacity=".72"/>
+    <path d="M15 130c3-26 20-39 49-39s47 13 50 39" fill="#a4a38e"/>
+    <path d="M34 57c-4-20 3-39 19-46 18-8 40-1 47 17 4 10 2 23-1 33l-1 21c-1 17-15 31-33 31S33 99 32 81z" fill="#292824"/>
+    <path d="M43 42c1-13 9-23 22-24 14-1 23 8 25 21 1 10-1 20-2 29l-1 13c-1 13-11 23-24 23S40 94 39 81l-1-17c0-9 1-16 5-22z" fill="#e9b69a"/>
+    <path d="M33 51c1-20 9-34 24-40 12-5 27-2 36 7 8 8 11 19 8 36-5-2-9-7-12-14-8 7-21 10-37 7-4 6-10 10-18 11z" fill="#292824"/>
+    <path d="M43 45c5-5 11-8 18-8 6 0 11 2 15 5-8 2-18 3-29 2l-4 1zm32-3c5-3 12-4 19-2l2 7c-8-2-15-3-21-5z" fill="#292824"/>
+    <path d="M48 62c3-2 7-2 10 0m13 0c3-2 7-2 10 0" fill="none" stroke="#493b34" stroke-width="2.2" stroke-linecap="round"/>
+    <ellipse cx="54" cy="67" rx="1.8" ry="2.2" fill="#292824"/><ellipse cx="76" cy="67" rx="1.8" ry="2.2" fill="#292824"/>
+    <path d="M63 69c-1 5-2 8-1 9 1 1 3 1 5 0" fill="none" stroke="#c88970" stroke-width="1.8" stroke-linecap="round"/>
+    <path d="M57 84c4 3 10 3 14 0" fill="none" stroke="#a95f54" stroke-width="2" stroke-linecap="round"/>
+    <path d="M42 83c-3-3-6-2-7 1v10c1 4 4 5 7 2zm47 0c3-3 6-2 7 1v10c-1 4-4 5-7 2z" fill="#e9b69a"/>
+    <circle cx="39" cy="95" r="3" fill="#bd5844"/><circle cx="91" cy="95" r="3" fill="#bd5844"/>
+    <path d="M55 101l9 9 9-9 13 9-7 20H48l-7-20z" fill="#f8f5ee"/>
+  </g>
+  <circle cx="64" cy="64" r="61" fill="none" stroke="#fffaf1" stroke-width="3"/>
+</svg>

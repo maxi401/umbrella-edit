@@ -1,0 +1,9 @@
+{
+    auto_https off
+}
+:{$PORT:10000} {
+    basic_auth {
+        {$FASHION_USERNAME} {$FASHION_PASSWORD_HASH}
+    }
+    reverse_proxy 127.0.0.1:8765
+}
