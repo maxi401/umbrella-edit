@@ -13,7 +13,7 @@ from pathlib import Path
 
 import numpy as np
 import torch
-from PIL import Image
+from PIL import Image, ImageOps
 from transformers import AutoImageProcessor, SegformerForSemanticSegmentation
 
 ROOT = Path(__file__).resolve().parent
@@ -90,7 +90,9 @@ def main():
         if source not in path.parents:
             continue
         with Image.open(path) as im:
-            image = im.convert("RGB")
+            image = ImageOps.exif_transpose(im).convert("RGB")
+        # Bound inference memory for large phone photos on small hosted instances.
+        image.thumbnail((1024, 1024), Image.Resampling.LANCZOS)
         w, h = image.size
         inputs = processor(images=image, return_tensors="pt")
         inputs = {k: v.to(device) for k, v in inputs.items()}

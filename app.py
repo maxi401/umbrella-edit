@@ -7,6 +7,7 @@ import base64
 import csv
 from datetime import date, datetime, timedelta
 import hashlib
+import io
 import json
 import mimetypes
 import os
@@ -243,16 +244,28 @@ class Handler(BaseHTTPRequestHandler):
             data = json.loads(self.rfile.read(int(self.headers.get("Content-Length", "0"))) or b"{}")
             name = Path(data.get("name", "photo.jpg")).name
             ext = Path(name).suffix.lower()
-            if ext not in {".jpg", ".jpeg", ".png", ".webp"}:
-                return self.send_json({"error": "Use a JPG, PNG, or WebP image"}, 400)
+            if ext not in {".jpg", ".jpeg", ".png", ".webp", ".heic", ".heif"}:
+                return self.send_json({"error": "Use a JPG, PNG, WebP, HEIC, or HEIF image"}, 400)
             upload_dir = DATA / "uploads"
             upload_dir.mkdir(parents=True, exist_ok=True)
             record_id = str(uuid.uuid4())
-            relative = f"uploads/{record_id}{ext}"
             try:
-                upload_dir.joinpath(f"{record_id}{ext}").write_bytes(base64.b64decode(data["data"], validate=True))
-            except Exception as exc:
-                return self.send_json({"error": f"Could not save image: {exc}"}, 400)
+                image_bytes = base64.b64decode(data["data"], validate=True)
+                if ext in {".heic", ".heif"}:
+                    from PIL import Image, ImageOps
+                    from pillow_heif import register_heif_opener
+                    register_heif_opener()
+                    with Image.open(io.BytesIO(image_bytes)) as image:
+                        converted = io.BytesIO()
+                        ImageOps.exif_transpose(image).convert("RGB").save(converted, format="JPEG", quality=95)
+                        image_bytes = converted.getvalue()
+                    ext = ".jpg"
+                relative = f"uploads/{record_id}{ext}"
+                upload_dir.joinpath(f"{record_id}{ext}").write_bytes(image_bytes)
+            except ImportError:
+                return self.send_json({"error": "HEIC support is not installed; choose a JPEG or PNG"}, 400)
+            except Exception:
+                return self.send_json({"error": "Could not read or save this image"}, 400)
             with connect() as con:
                 con.execute("""INSERT INTO records (id, relative_path, record_type, source_title, owned_status, human_verified)
                     VALUES (?, ?, ?, ?, 'unknown', 1)""", (record_id, relative, data.get("record_type", "ootd"), data.get("title") or "New photo"))
